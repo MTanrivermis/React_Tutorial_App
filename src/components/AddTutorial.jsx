@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-const AddTutorial = () => {
+const AddTutorial = ({ getTutorials }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -10,15 +10,20 @@ const AddTutorial = () => {
     const newTutor = { title: title, description: description };
     console.log(newTutor);
     postTutorial(newTutor);
+    setTitle("");
+    setDescription("");
   };
 
   const postTutorial = async (newTutor) => {
     const BASE_URL = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
     try {
-      await axios.post(BASE_URL, { newTutor });
+      await axios.post(BASE_URL, newTutor);
     } catch (error) {
       console.log(error);
     }
+
+    //? Tüm tutorial'lari iste ve state'i güncelle
+    getTutorials();
   };
 
   return (
