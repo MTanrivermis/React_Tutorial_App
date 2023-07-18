@@ -36,6 +36,16 @@ const TutorialList = ({ tutorials, getTutorials }) => {
     getTutorials();
   };
 
+  // const editTutor = async (tutor) => {
+
+  //   try {
+  //     await axios.put(`${BASE_URL}/${id}/`, tutor);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   getTutorials();
+  // };
+
   return (
     <div className="container mt-4">
       <table className="table table-striped">
