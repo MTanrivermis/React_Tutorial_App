@@ -57,9 +57,12 @@ const TutorialList = ({ tutorials, getTutorials }) => {
             <th scope="col" className="text-center">
               Edit
             </th>
+            <th scope="col" className="text-center">
+              Delete
+            </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="focus-in-expand-fwd">
           {tutorials?.map((item) => {
             const { id, title, description } = item;
             return (
@@ -84,6 +87,8 @@ const TutorialList = ({ tutorials, getTutorials }) => {
 
                     onClick={() => setEditItem(item)}
                   />
+                </td>
+                <td className="text-center text-nowrap">
                   <AiFillDelete
                     size={22}
                     type="button"
