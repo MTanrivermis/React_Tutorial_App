@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const TutorialList = ({ tutorials, getTutorials }) => {
   const [editItem, setEditItem] = useState("");
+
   console.log(editItem);
   // const tutorials = [
   //   {
@@ -29,15 +30,6 @@ const TutorialList = ({ tutorials, getTutorials }) => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${BASE_URL}/${id}/`);
-    } catch (error) {
-      console.log(error);
-    }
-    getTutorials();
-  };
-
-  const editTutor = async (tutor) => {
-    try {
-      await axios.put(`${BASE_URL}/${tutor.id}/`, tutor);
     } catch (error) {
       console.log(error);
     }
@@ -71,15 +63,21 @@ const TutorialList = ({ tutorials, getTutorials }) => {
                     type="button"
                     className="me-2 text-warning"
                     data-bs-toggle="modal"
-                    data-bs-target="#openModal"
-                    //
+                    data-bs-target="#open-modal"
+                    // onClick={() =>
+                    //   editTutor({
+                    //     id: 1934,
+                    //     title: "REACT",
+                    //     description: "JS Library",
+                    //   })
+                    // }
+
                     onClick={() => setEditItem(item)}
                   />
-
                   <AiFillDelete
                     size={22}
                     type="button"
-                    className="text-danger"
+                    className="text-danger "
                     onClick={() => handleDelete(id)}
                   />
                 </td>
@@ -88,7 +86,8 @@ const TutorialList = ({ tutorials, getTutorials }) => {
           })}
         </tbody>
       </table>
-      <EditTutorial editItem={editItem} />
+
+      <EditTutorial editItem={editItem} getTutorials={getTutorials} />
     </div>
   );
 };

@@ -5,14 +5,12 @@ import axios from "axios";
 
 const Home = () => {
   const [tutorials, setTutorials] = useState([]);
-  const BASE_URL = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
 
   const getTutorials = async () => {
+    const BASE_URL = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
     try {
-      //! istersek bu halde de yapabiliriz.
-      //const res = await axios(BASE_URL);
-      //setTutorials(res.data);
-
+      // const res = await axios(BASE_URL)
+      // setTutorials(res.data)
       const { data } = await axios(BASE_URL);
       setTutorials(data);
     } catch (error) {
@@ -22,7 +20,7 @@ const Home = () => {
 
   console.log(tutorials);
 
-  //? Mount aşamasında API'ye istek atıyoruz.
+  //? Mount asamasinda api'ye istek atiyoruz
   useEffect(() => {
     getTutorials();
   }, []);
